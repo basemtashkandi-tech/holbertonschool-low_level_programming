@@ -19,7 +19,6 @@ int is_prime_number(int n)
  * is_prime_try - helper
  * @n: the number
  * @x: where we start
- * @y: where we stop
  * Return: (1) if the input integer is a prime number, otherwise return (0)
  */
 int is_prime_try(int n, int x)
