@@ -20,20 +20,16 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (filename == NULL)
 		return (0);
 
-	/* Open the file in Read-Only mode */
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (0);
 
-	/* Allocate memory for the buffer */
 	buffer = malloc(sizeof(char) * letters);
 	if (buffer == NULL)
 	{
 		close(fd);
 		return (0);
 	}
-
-	/* Read from the file into the buffer */
 	bytes_read = read(fd, buffer, letters);
 	if (bytes_read == -1)
 	{
@@ -41,8 +37,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		close(fd);
 		return (0);
 	}
-
-	/* Write the buffer to Standard Output */
 	bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
 	if (bytes_written == -1 || bytes_written != bytes_read)
 	{
@@ -50,8 +44,6 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		close(fd);
 		return (0);
 	}
-
-	/* Clean up */
 	free(buffer);
 	close(fd);
 
